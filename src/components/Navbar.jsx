@@ -49,7 +49,7 @@ const Navbar = () => {
         {/* Right Buttons - Desktop */}
         <div className="hidden items-center gap-3 md:flex">
           <button
-            onClick={() => navigate("/signin")}
+            onClick={() => navigate("Signin")}
             className="cursor-pointer rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-semibold text-gray-700 transition-all duration-300 hover:scale-105 hover:border-[#55B592] hover:text-[#55B592]"
           >
             Login

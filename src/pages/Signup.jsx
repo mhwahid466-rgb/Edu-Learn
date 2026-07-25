@@ -162,7 +162,7 @@ function Signup() {
 
         <p className="text-center text-sm mt-2" style={{ color: "#666" }}>
           Already have an account?{" "}
-          <a href="/signin" style={{ color: "#55B592", fontWeight: 600 }}>
+          <a href="/Signin" style={{ color: "#55B592", fontWeight: 600 }}>
             Sign in
           </a>
         </p>
