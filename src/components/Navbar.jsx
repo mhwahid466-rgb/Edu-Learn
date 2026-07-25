@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { FaGraduationCap, FaBars, FaTimes } from "react-icons/fa";
 
 const NAV_LINKS = [

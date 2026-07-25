@@ -3,7 +3,7 @@ import { supabase } from "../lib/supabase";
 import { Button, Card, Form, Input } from "antd";
 import { FiMail, FiLock } from "react-icons/fi";
 import { FaSignInAlt } from "react-icons/fa";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react"; 
 
 

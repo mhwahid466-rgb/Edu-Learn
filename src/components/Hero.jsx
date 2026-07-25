@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { FaArrowRight, FaPlay, FaLeaf, FaMugHot } from "react-icons/fa";
 import { HiOutlineBookOpen } from "react-icons/hi";
 
