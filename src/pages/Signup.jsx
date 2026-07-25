@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase";
 import { Button, Card, Form, Input } from "antd";
 import { FiMail, FiLock, FiUser } from "react-icons/fi";
 import { FaUserPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Signup() {
   const [form] = Form.useForm();
@@ -162,9 +163,9 @@ function Signup() {
 
         <p className="text-center text-sm mt-2" style={{ color: "#666" }}>
           Already have an account?{" "}
-          <a href="/Signin" style={{ color: "#55B592", fontWeight: 600 }}>
-            Sign in
-          </a>
+          <Link to="/signin" style={{ color: "#55B592", fontWeight: 600 }}>
+      Sign in
+   </Link>
         </p>
       </Card>
     </div>
