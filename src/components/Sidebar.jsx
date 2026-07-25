@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu, ConfigProvider, Typography } from "antd";
-import { useNavigate, useLocation } from "react-router";
 import {
   FiHome,
   FiUsers,
@@ -24,11 +23,13 @@ const menuItems = [
 ];
 
 const Sidebar = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [activeKey, setActiveKey] = useState("/dashboard");
 
-  const activeKey =
-    location.pathname === "/" ? "/dashboard" : location.pathname;
+ const handleLogout = () => {
+  localStorage.removeItem("token");
+  sessionStorage.clear();
+  window.location.href = "/signin";
+};
 
   return (
     <aside className="w-[260px] h-full bg-white flex flex-col justify-between shrink-0 overflow-y-auto">
@@ -66,7 +67,7 @@ const Sidebar = () => {
           <Menu
             mode="inline"
             selectedKeys={[activeKey]}
-            onClick={({ key }) => navigate(key)}
+            onClick={({ key }) => setActiveKey(key)}
             items={menuItems}
             className="border-none px-1 font-medium"
           />
@@ -77,7 +78,7 @@ const Sidebar = () => {
       <div className="px-6 py-6 border-t border-gray-100 mt-6">
         <button
           type="button"
-          onClick={() => navigate("/logout")}
+          onClick={handleLogout}
           className="flex items-center gap-3 text-red-500 hover:text-red-600 font-medium text-[15px] transition-colors duration-200"
         >
           <FiLogOut size={18} />
