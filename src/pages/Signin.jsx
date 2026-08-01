@@ -4,13 +4,13 @@ import { Button, Card, Form, Input } from "antd";
 import { FiMail, FiLock } from "react-icons/fi";
 import { FaSignInAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react"; 
+import { useState } from "react";
 
 
 export default function Signin() {
   const [form] = Form.useForm();
- const [loading, setLoading] = useState(false);
-   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     setLoading(true);
@@ -30,6 +30,20 @@ export default function Signin() {
 
     message.success("Login successfully");
     navigate("/dashboard");
+  };
+
+  const handleGoogleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo:
+          "https:edu-learn-9hip-srdomivj4-mustafa-hassans-projects-d11d141d.vercel.app/dashboard",
+      },
+    });
+
+    if (error) {
+      message.error(error.message);
+    }
   };
   return (
     <div
@@ -110,7 +124,7 @@ export default function Signin() {
             <Button
               htmlType="submit"
               block
-              loading={loading} 
+              loading={loading}
               className="border-0 font-semibold tracking-wide text-white hover:opacity-90"
               style={{ height: 48, borderRadius: 10, backgroundColor: "#55B592" }}
             >
@@ -118,15 +132,32 @@ export default function Signin() {
             </Button>
           </Form.Item>
         </Form>
+        <Button
+          block
+          size="large"
+          onClick={handleGoogleLogin}
+          className="mt-3 flex items-center justify-center gap-3 border border-gray-300 bg-white text-gray-700 font-medium hover:!border-gray-400 hover:!bg-gray-50 transition-all duration-200 shadow-sm"
+          style={{
+            height: 50,
+            borderRadius: 12,
+          }}
+        >
+          <img
+            src="https://www.svgrepo.com/show/475656/google-color.svg"
+            alt="Google"
+            className="w-5 h-5"
+          />
+          Continue with Google
+        </Button>
 
         <p className="text-center text-sm mt-2" style={{ color: "#666" }}>
           Don't have an account?{" "}
           <Link to="/signup" style={{ color: "#55B592", fontWeight: 600 }}>
             sign up
-           </Link>
+          </Link>
         </p>
       </Card>
+
     </div>
   );
 }
-   
