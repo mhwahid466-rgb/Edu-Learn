@@ -4,11 +4,12 @@ import { supabase } from "../lib/supabase";
 import { Button, Card, Form, Input } from "antd";
 import { FiMail, FiLock, FiUser } from "react-icons/fi";
 import { FaUserPlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false); 
+  const navigate = useNavigate()
 
   const onFinish = async (values) => {
     setLoading(true); 
@@ -21,6 +22,7 @@ function Signup() {
         data: {
           full_name: fullName,
         },
+            emailRedirectTo: "http://localhost:5173/signin",
       },
     });
 
@@ -32,6 +34,7 @@ function Signup() {
     }
 
     message.success("Account created successfully!");
+     navigate("/signin")
 
     console.log(data);
   };
