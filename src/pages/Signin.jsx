@@ -33,18 +33,19 @@ export default function Signin() {
   };
 
   const handleGoogleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo:
-          "https:edu-learn-9hip-srdomivj4-mustafa-hassans-projects-d11d141d.vercel.app/dashboard",
-      },
-    });
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo:
+        "https://edu-learn-9hip-srdomivj4-mustafa-hassans-projects-d11d141d.vercel.app/dashboard",
+    },
+  });
 
-    if (error) {
-      message.error(error.message);
-    }
-  };
+  if (error) {
+    message.error(error.message);
+  }
+};
+  
   return (
     <div
       className="relative h-screen w-full overflow-hidden flex items-center justify-center px-4 py-4"

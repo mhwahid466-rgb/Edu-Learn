@@ -1,4 +1,4 @@
-import { useState } from "react"; 
+import { useState } from "react";
 import { message } from "antd";
 import { supabase } from "../lib/supabase";
 import { Button, Card, Form, Input } from "antd";
@@ -8,11 +8,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
 
   const onFinish = async (values) => {
-    setLoading(true); 
+    setLoading(true);
     const { fullName, email, password } = values;
 
     const { data, error } = await supabase.auth.signUp({
@@ -22,11 +22,12 @@ function Signup() {
         data: {
           full_name: fullName,
         },
-            emailRedirectTo: "http://localhost:5173/signin",
+        redirectTo:
+          "https://edu-learn-9hip-srdomivj4-mustafa-hassans-projects-d11d141d.vercel.app/dashboard",
       },
     });
 
-    setLoading(false); 
+    setLoading(false);
 
     if (error) {
       message.error(error.message);
@@ -34,7 +35,7 @@ function Signup() {
     }
 
     message.success("Account created successfully!");
-     navigate("/signin")
+    navigate("/signin")
 
     console.log(data);
   };
@@ -155,7 +156,7 @@ function Signup() {
             <Button
               htmlType="submit"
               block
-              loading={loading} 
+              loading={loading}
               className="border-0 font-semibold tracking-wide text-white hover:opacity-90"
               style={{ height: 48, borderRadius: 10, backgroundColor: "#55B592" }}
             >
@@ -167,8 +168,8 @@ function Signup() {
         <p className="text-center text-sm mt-2" style={{ color: "#666" }}>
           Already have an account?{" "}
           <Link to="/signin" style={{ color: "#55B592", fontWeight: 600 }}>
-      Sign in
-   </Link>
+            Sign in
+          </Link>
         </p>
       </Card>
     </div>
