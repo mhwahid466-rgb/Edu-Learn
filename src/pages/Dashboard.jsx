@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Typography, Divider } from "antd";
 import { FiUsers, FiFolder, FiClipboard, FiDollarSign } from "react-icons/fi";
 import Sidebar from "../components/Sidebar.jsx";
@@ -44,8 +44,19 @@ const stats = [
     positive: true,
   },
 ];
-
 const Dashboard = () => {
+  useEffect(() => {
+  const checkUser = async () => {
+    const { data } = await supabase.auth.getSession();
+
+    if (data.session) {
+      message.success("Google Login successfully");
+    }
+  };
+
+  checkUser();
+}, []);
+
   return (
     <div className="h-screen w-full bg-background flex items-center justify-center overflow-hidden p-3 md:p-5">
       <div className="w-full h-full max-w-[1600px] flex flex-row rounded-3xl shadow-xl overflow-hidden">
