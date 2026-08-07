@@ -23,7 +23,7 @@ function Signup() {
           full_name: fullName,
         },
         redirectTo:
-          "https://edu-learn-9hip-srdomivj4-mustafa-hassans-projects-d11d141d.vercel.app/dashboard",
+          "https://edu-learn-9hip-srdomivj4-mustafa-hassans-projects-d11d141d.vercel.app/signin",
       },
     });
 
